@@ -11,7 +11,7 @@ app.get('/',function (req, res) {
     res.end("ok bot")
     })
 app.post('/webhook', (req, res) => {
-    console.log(req.body.event);
+    console.log(req.body.event[1].message.text);
     let reply_token = req.body.events[0].replyToken
     reply(reply_token)
     res.sendStatus(200)
