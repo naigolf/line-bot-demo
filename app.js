@@ -11,8 +11,13 @@ app.get('/',function (req, res) {
     res.end("ok bot")
     })
 app.post('/webhook', (req, res) => {
+     var tex_t = req.body.events[0].message.text
+     var sende_r = req.body.events[0].source.userId
+     var replytoke_n = req.body.events[0].replyToken
+    
     console.log("---0---");
-    console.log(req.body.events[0].message.text);
+    console.log(tex_t);
+    
     let reply_token = req.body.events[0].replyToken
     reply(reply_token)
     res.sendStatus(200)
@@ -29,10 +34,6 @@ function reply(reply_token) {
         messages: [{
             type: 'text',
             text: 'Hello'
-        },
-        {
-            type: 'text',
-            text: 'How are you?'
         }]
     })
     request.post({
@@ -40,6 +41,6 @@ function reply(reply_token) {
         headers: headers,
         body: body
     }, (err, res, body) => {
-        console.log('status = ' + res.statusCode);
+        //console.log('status = ' + res.statusCode);
     });
 }
