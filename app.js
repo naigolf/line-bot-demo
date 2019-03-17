@@ -33,7 +33,7 @@ function reply(reply_token) {
         replyToken: reply_token,
         messages: [{
             type: 'text',
-            text: tex_t
+            text: 'ok'
         }]
     })
     request.post({
